@@ -1002,9 +1002,13 @@ class FunkinLua
 			}
 			PlayState.instance.moveCamera(isDad);
 		});
-		Lua_helper.add_callback(lua, "cameraShake", function(camera:String, intensity:Float, duration:Float)
+		Lua_helper.add_callback(lua, "cameraShake", function(camera:String, intensity:Float, duration:Float, ?shit:Bool = false)
 		{
 			cameraFromString(camera).shake(intensity, duration);
+                        #if android
+		        if (ClientPrefs.vibration && shit)
+			        Hardware.vibrate(1000);
+		        #end
 		});
 
 		Lua_helper.add_callback(lua, "cameraFlash", function(camera:String, color:String, duration:Float, forced:Bool)
