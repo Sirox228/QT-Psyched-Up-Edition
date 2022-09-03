@@ -4,6 +4,9 @@ import llua.LuaL;
 import llua.State;
 import llua.Convert;
 #end
+#if android
+import android.Hardware;
+#end
 import animateatlas.AtlasFrameMaker;
 import flixel.FlxG;
 import flixel.addons.effects.FlxTrail;
@@ -1007,7 +1010,7 @@ class FunkinLua
 			cameraFromString(camera).shake(intensity, duration);
                         #if android
 		        if (ClientPrefs.vibration && shit)
-			        Hardware.vibrate(1000);
+			        Hardware.vibrate(1500);
 		        #end
 		});
 
