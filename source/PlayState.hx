@@ -948,7 +948,7 @@ class PlayState extends MusicBeatState
 		}
 
 		// Moved gas effect to be useable across all songs!
-		if (!ClientPrefs.lowQuality && SONG.song.toLowerCase() == 'censory-overload')
+		if (!ClientPrefs.lowQuality)
 		{
 			// Probably a better way of doing this... too bad! -Haz
 			qt_gas01 = new FlxSprite();
@@ -990,7 +990,7 @@ class PlayState extends MusicBeatState
 			disableArrowIntro = true;
 
 		// Adding sawblades and pincers to every song so all songs can use them!
-		if (ClientPrefs.flashing && (SONG.song.toLowerCase() == "termination" || SONG.song.toLowerCase() == "tutorial" || SONG.song.toLowerCase() == "determination" || SONG.song.toLowerCase() == "sugar-rush" || SONG.song.toLowerCase() == "final-destination"))
+		if (ClientPrefs.flashing)
 		{
 			hazardOverlayShit = new BGSprite('hazard/inhuman-port/alert-vignette');
 			hazardOverlayShit.setGraphicSize(FlxG.width, FlxG.height);
@@ -1004,8 +1004,6 @@ class PlayState extends MusicBeatState
 		}
 
 		// Alert!
-		if (SONG.song.toLowerCase() == "termination" || SONG.song.toLowerCase() == "tutorial" || SONG.song.toLowerCase() == "determination" || SONG.song.toLowerCase() == "sugar-rush" || SONG.song.toLowerCase() == "final-destination")
-		{
 			kb_attack_alert = new FlxSprite();
 			kb_attack_alert.frames = Paths.getSparrowAtlas('hazard/qt-port/attack_alert_NEW');
 			kb_attack_alert.animation.addByPrefix('alert', 'kb_attack_animation_alert-single', 24, false);
@@ -1027,13 +1025,10 @@ class PlayState extends MusicBeatState
 			kb_attack_saw.setGraphicSize(Std.int(kb_attack_saw.width * 1.15));
 			kb_attack_saw.antialiasing = ClientPrefs.globalAntialiasing;
 			kb_attack_saw.setPosition(-860, 630);
-		}
 
 		sawbladeHits = 0;
 		tauntCounter = 0;
 
-		if (SONG.song.toLowerCase() == "termination" || SONG.song.toLowerCase() == "determination" || SONG.song.toLowerCase() == "sugar-rush" || SONG.song.toLowerCase() == "final-destination")
-		{
 			// Pincer shit for moving notes around for a little bit of trollin'
 			pincer1 = new FlxSprite(0,
 				0).loadGraphic(Paths.image('hazard/qt-port/pincer-open')); // (sirox) just need to cache that shit, cuz devs are dumb and forgot
@@ -1075,10 +1070,9 @@ class PlayState extends MusicBeatState
 				pincer3.offset.set(218, 240);
 				pincer4.offset.set(218, 240);
 			}
-		}
 
 		// For the 'alarm' effect. Only added if flashling lights is allowed and low quality is off.
-		if (ClientPrefs.flashing && !ClientPrefs.lowQuality && (SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == 'termination' || SONG.song.toLowerCase() == "determination" || SONG.song.toLowerCase() == "sugar-rush" || SONG.song.toLowerCase() == "final-destination"))
+		if (ClientPrefs.flashing && !ClientPrefs.lowQuality)
 		{
 			hazardAlarmLeft = new BGSprite('hazard/inhuman-port/back-Gradient', -600, -480, 0.5, 0.5);
 			hazardAlarmLeft.setGraphicSize(Std.int(hazardAlarmLeft.width * 1.1));
