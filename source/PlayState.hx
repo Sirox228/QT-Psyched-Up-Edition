@@ -990,7 +990,7 @@ class PlayState extends MusicBeatState
 			disableArrowIntro = true;
 
 		// Adding sawblades and pincers to every song so all songs can use them!
-		if (ClientPrefs.flashing && SONG.song.toLowerCase() == "termination" || SONG.song.toLowerCase() == "tutorial")
+		if (ClientPrefs.flashing && (SONG.song.toLowerCase() == "termination" || SONG.song.toLowerCase() == "tutorial" || SONG.song.toLowerCase() == "determination" || SONG.song.toLowerCase() == "sugar-rush" || SONG.song.toLowerCase() == "final-destination"))
 		{
 			hazardOverlayShit = new BGSprite('hazard/inhuman-port/alert-vignette');
 			hazardOverlayShit.setGraphicSize(FlxG.width, FlxG.height);
@@ -1004,7 +1004,7 @@ class PlayState extends MusicBeatState
 		}
 
 		// Alert!
-		if (SONG.song.toLowerCase() == "termination" || SONG.song.toLowerCase() == "tutorial")
+		if (SONG.song.toLowerCase() == "termination" || SONG.song.toLowerCase() == "tutorial" || SONG.song.toLowerCase() == "determination" || SONG.song.toLowerCase() == "sugar-rush" || SONG.song.toLowerCase() == "final-destination")
 		{
 			kb_attack_alert = new FlxSprite();
 			kb_attack_alert.frames = Paths.getSparrowAtlas('hazard/qt-port/attack_alert_NEW');
@@ -1032,7 +1032,7 @@ class PlayState extends MusicBeatState
 		sawbladeHits = 0;
 		tauntCounter = 0;
 
-		if (SONG.song.toLowerCase() == "termination")
+		if (SONG.song.toLowerCase() == "termination" || SONG.song.toLowerCase() == "determination" || SONG.song.toLowerCase() == "sugar-rush" || SONG.song.toLowerCase() == "final-destination")
 		{
 			// Pincer shit for moving notes around for a little bit of trollin'
 			pincer1 = new FlxSprite(0,
@@ -1078,7 +1078,7 @@ class PlayState extends MusicBeatState
 		}
 
 		// For the 'alarm' effect. Only added if flashling lights is allowed and low quality is off.
-		if (ClientPrefs.flashing && !ClientPrefs.lowQuality && (SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == 'termination'))
+		if (ClientPrefs.flashing && !ClientPrefs.lowQuality && (SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == 'termination' || SONG.song.toLowerCase() == "determination" || SONG.song.toLowerCase() == "sugar-rush" || SONG.song.toLowerCase() == "final-destination"))
 		{
 			hazardAlarmLeft = new BGSprite('hazard/inhuman-port/back-Gradient', -600, -480, 0.5, 0.5);
 			hazardAlarmLeft.setGraphicSize(Std.int(hazardAlarmLeft.width * 1.1));
