@@ -22,6 +22,7 @@ import openfl.display.BitmapData;
 import flash.media.Sound;
 import openfl.Lib;
 import openfl.display3D.textures.Texture;
+import lime.graphics.Image;
 
 using StringTools;
 
