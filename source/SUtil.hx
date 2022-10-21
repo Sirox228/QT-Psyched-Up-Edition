@@ -164,8 +164,8 @@ class SUtil
 					+ '\n');
 			}
 			#if android
-			catch (e:Dynamic)
-			Hardware.toast("Error!\nClouldn't save the crash dump because:\n" + e, ToastType.LENGTH_LONG);
+			catch (e:Dynamic) {}
+			//Hardware.toast("Error!\nClouldn't save the crash dump because:\n" + e, ToastType.LENGTH_LONG);
 			#end
 
 			Sys.println(errMsg);
@@ -184,11 +184,11 @@ class SUtil
 				FileSystem.createDirectory(SUtil.getPath() + 'saves');
 
 			File.saveContent(SUtil.getPath() + 'saves/' + fileName + fileExtension, fileData);
-			Hardware.toast("File Saved Successfully!", ToastType.LENGTH_LONG);
+			//Hardware.toast("File Saved Successfully!", ToastType.LENGTH_LONG);
 		}
 		#if android
-		catch (e:Dynamic)
-		Hardware.toast("Error!\nClouldn't save the file because:\n" + e, ToastType.LENGTH_LONG);
+		catch (e:Dynamic) {}
+		//Hardware.toast("Error!\nClouldn't save the file because:\n" + e, ToastType.LENGTH_LONG);
 		#end
 	}
 
@@ -200,8 +200,8 @@ class SUtil
 				File.saveBytes(savePath, Assets.getBytes(copyPath));
 		}
 		#if android
-		catch (e:Dynamic)
-		Hardware.toast("Error!\nClouldn't copy the file because:\n" + e, ToastType.LENGTH_LONG);
+		catch (e:Dynamic) {}
+		//Hardware.toast("Error!\nClouldn't copy the file because:\n" + e, ToastType.LENGTH_LONG);
 		#end
 	}
 }
