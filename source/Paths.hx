@@ -374,35 +374,7 @@ class Paths
 		{
 			if (!currentTrackedAssets.exists(key))
 			{
-				var bitmap:BitmapData = BitmapData.fromFile(modsImages(key));
-				var newGraphic:FlxGraphic = null;
-				if (gpurender)
-				{
-					switch (ClientPrefs.render)
-					{
-						case 1:
-							var texture = FlxG.stage.context3D.createTexture(bitmap.width, bitmap.height, BGRA, true);
-							texture.uploadFromBitmapData(bitmap);
-							currentTrackedTextures.set(key, texture);
-							bitmap.dispose();
-							bitmap.disposeImage();
-							bitmap = null;
-							newGraphic = FlxGraphic.fromBitmapData(BitmapData.fromTexture(texture), false, key);
-						case 2:
-							var texture = Lib.current.stage.context3D.createTexture(bitmap.width, bitmap.height, BGRA, true);
-							texture.uploadFromBitmapData(bitmap);
-							currentTrackedTextures.set(key, texture);
-							bitmap.dispose();
-							bitmap.disposeImage();
-							bitmap = null;
-							newGraphic = FlxGraphic.fromBitmapData(BitmapData.fromTexture(texture), false, key);
-						default:
-							newGraphic = FlxGraphic.fromBitmapData(bitmap, false, key);
-					}
-				}
-				else
-					newGraphic = FlxGraphic.fromBitmapData(bitmap, false, key);
-
+				var newGraphic:FlxGraphic = FlxGraphic.fromBitmapData(BitmapData.fromImage(Image.fromFile(modsImages(key))), false, key);
 				newGraphic.persist = true;
 				currentTrackedAssets.set(key, newGraphic);
 			}
@@ -416,37 +388,7 @@ class Paths
 		{
 			if (!currentTrackedAssets.exists(path))
 			{
-				var newGraphic:FlxGraphic = null;
-				var bitmap:BitmapData = OpenFlAssets.getBitmapData(path);
-
-				if (gpurender)
-				{
-					switch (ClientPrefs.render)
-					{
-						case 1:
-							var texture = FlxG.stage.context3D.createTexture(bitmap.width, bitmap.height, BGRA, true);
-							texture.uploadFromBitmapData(bitmap);
-							currentTrackedTextures.set(path, texture);
-							bitmap.dispose();
-							bitmap.disposeImage();
-							bitmap = null;
-							newGraphic = FlxGraphic.fromBitmapData(BitmapData.fromTexture(texture), false, path);
-						case 2:
-							var texture = Lib.current.stage.context3D.createTexture(bitmap.width, bitmap.height, BGRA, true);
-							texture.uploadFromBitmapData(bitmap);
-							currentTrackedTextures.set(path, texture);
-							bitmap.dispose();
-							bitmap.disposeImage();
-							bitmap = null;
-							newGraphic = FlxGraphic.fromBitmapData(BitmapData.fromTexture(texture), false, path);
-						default:
-							newGraphic = FlxGraphic.fromBitmapData(bitmap, false, path);
-					}
-				}
-				else
-					newGraphic = FlxGraphic.fromBitmapData(bitmap, false, path);
-
-				newGraphic.persist = true;
+				var newGraphic:FlxGraphic = FlxGraphic.fromBitmapData(BitmapData.fromImage(Image.fromBytes(OpenFlAssets.getBytes(path))), false, key);
 				currentTrackedAssets.set(path, newGraphic);
 			}
 
