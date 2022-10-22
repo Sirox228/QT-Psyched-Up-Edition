@@ -51,7 +51,8 @@ class HealthIcon extends FlxSprite
 				name = 'icons/icon-face'; // Prevents crash from missing icon
 			var file:Dynamic = Paths.image(name);
 
-			loadGraphic(file); // Load stupidly first for getting the file size
+			//loadGraphic(file); Load stupidly first for getting the file size
+                        lime.app.Application.current.window.alert(name + "\n" + Std.string(file == null), "debug");
 			loadGraphic(file, true, Math.floor(width / 2), Math.floor(height)); // Then load it fr
 			iconOffsets[0] = (width - 150) / 2;
 			iconOffsets[1] = (width - 150) / 2;
